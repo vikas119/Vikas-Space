@@ -1,0 +1,56 @@
+<section>
+  <mat-accordion *ngIf="userAuthenticated() else notAuthUser">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Create a Post
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="" *ngIf="submissionInProcess">
+        <br> <mat-progress-bar mode="buffer"></mat-progress-bar> <br>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="Post_data.title" required>
+      </mat-form-field> <br>
+
+      <mat-form-field>
+        <mat-label>Subtitle</mat-label>
+        <input matInput [(ngModel)]="Post_data.subtitle" required>
+      </mat-form-field> <br>
+
+      <mat-form-field>
+        <mat-label>Short Description</mat-label>
+        <input matInput [(ngModel)]="Post_data.short_desc" required>
+      </mat-form-field> <br>
+
+      <!-- <mat-form-field>
+        <mat-label>Post Content</mat-label>
+        <textarea matInput [(ngModel)]="Post_data.content"></textarea>
+      </mat-form-field> <br> -->
+
+      <ckeditor [(ngModel)]="Post_data.content" required></ckeditor> <br>
+
+
+      <div class="upload_image">
+        <label for="thumbnail-image">
+          <mat-icon>photo</mat-icon>
+        </label>
+        <input type="file" id="thumbnail-image" (change)="uploadImage($event)" required>
+        <p *ngIf="image_loaded">Loaded file: {{image_loaded.name}}</p>
+      </div> <br>
+
+      <button
+      mat-raised-button
+      (click)="createPost()"
+      [disabled]="!Post_data.title || !Post_data.subtitle  || !Post_data.short_desc || !Post_data.content || !image_loaded.name || submissionInProcess"
+      >Submit Post</button>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+  <ng-template #notAuthUser>
+    <p><mat-icon>help_outline</mat-icon> Please login to write a post.</p>
+  </ng-template>
+</section>

@@ -1,0 +1,19 @@
+<section>
+  <mat-card *ngFor="let post of posts | async">
+    <div routerLink="/blog/{{post.id}}" class="card_to_detail">
+      <mat-card-title>{{post.title}}</mat-card-title>
+      <mat-card-subtitle>{{post.subtitle}}</mat-card-subtitle>
+      <img mat-card-image src="{{post.thumbnail}}" alt="Post image">
+      <mat-card-content>{{post.short_desc}}</mat-card-content>
+    </div>
+    <p>
+      <small>Posted by {{post.author}}; on {{post.published.toMillis() | date:'fullDate'}}</small>
+    </p>
+    <!-- <mat-card-actions>
+      <button mat-mini-fab color="accent">
+          <mat-icon>plus_one</mat-icon>
+      </button>
+      <button mat-button>Share</button>
+    </mat-card-actions> -->
+  </mat-card>
+</section>
