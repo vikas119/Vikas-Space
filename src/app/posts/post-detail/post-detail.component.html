@@ -1,7 +1,5 @@
 <div class="post_content" *ngIf="post">
-  <h1>{{post.title}}</h1> <br>
   <div [innerHTML]="post.content" class=""></div> <br>
-
   <p>
     <small>
     Posted by {{post.author}}; on {{post.published.toMillis() | date:'fullDate'}}
