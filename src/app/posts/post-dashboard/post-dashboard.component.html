@@ -1,3 +1,4 @@
+<div [innerHTML]="Post_data.content" class=""></div>
 <section>
   <mat-accordion *ngIf="userAuthenticated() else notAuthUser">
     <mat-expansion-panel>
@@ -26,13 +27,7 @@
         <input matInput [(ngModel)]="Post_data.short_desc" required>
       </mat-form-field> <br>
 
-      <!-- <mat-form-field>
-        <mat-label>Post Content</mat-label>
-        <textarea matInput [(ngModel)]="Post_data.content"></textarea>
-      </mat-form-field> <br> -->
-
       <ckeditor [(ngModel)]="Post_data.content" required></ckeditor> <br>
-
 
       <div class="upload_image">
         <label for="thumbnail-image">
